@@ -19,9 +19,11 @@ interface CustomerTypeData {
 }
 
 export default function DashboardPage() {
-  const [data, setData] = useState<CustomerTypeData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // State management for the component
+  const [data, setData] = useState<CustomerTypeData[]>([]);  // Stores the fetched customer data
+  const [loading, setLoading] = useState(true);              // Controls loading spinner display
+  const [error, setError] = useState<string | null>(null);   // Stores error messages if API call fails
+
 
   useEffect(() => {
     fetch("/api/customer-type")

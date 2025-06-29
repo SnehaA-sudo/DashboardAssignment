@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 
+// Types for the data
 interface CustomerTypeData {
   count: number;
   acv: number;
@@ -8,10 +9,12 @@ interface CustomerTypeData {
   Cust_Type: string;
 }
 
+// Props for the component
 interface Props {
   data: CustomerTypeData[];
 }
 
+// Colors for the chart
 const COLORS: Record<string, string> = {
   'Existing Customer': '#4285F4',
   'New Customer': '#FB8C00',
@@ -20,6 +23,7 @@ const COLORS: Record<string, string> = {
 export default function D3DoughnutChart({ data }: Props) {
   const ref = useRef<SVGSVGElement | null>(null);
 
+  // useEffect hook to update the chart when the data changes
   useEffect(() => {
     if (!data.length) return;
     const svg = d3.select(ref.current);
